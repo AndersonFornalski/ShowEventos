@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+
+<title>Lista</title>
+</head>
+<body>
+	<h1>Lista de Eventos</h1>
+	<h3><a href="/cadastrarEvento">Cadastrar Evento</a></h3>
+	
+	<table>
+		<tr>
+			<th>Nome</th>
+			<th>Sobrenome</th>
+			<th>Email</th>
+			<th>Fone</th>
+			<th>Local</th>
+			<th>Data</th>
+			<th>Horario</th>
+		</tr>
+		<tr th:each="evento: ${eventosss}">
+			<td><span th:text="${evento.nome}"></span></td>
+			<td><span th:text="${evento.sobrenome}"></span></td>
+			<td><span th:text="${evento.email}"></span></td>
+			<td><span th:text="${evento.telefone}"></span></td>
+			<td><span th:text="${evento.local}"></span></td>
+			<td><span th:text="${evento.data}"></span></td>
+			<td><span th:text="${evento.horario}"></span></td>
+		</tr>
+	</table>
+<!-- <a th: href="${(#mv.url('EC#detalhesEvento').arg(0, evento.id_evento)).build()}"> -->>
+
+</body>
+</html>
+
+
+
+
+
