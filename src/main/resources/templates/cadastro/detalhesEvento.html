@@ -19,11 +19,41 @@
 			<p><span th:text="${evento.local}"></span></p>
 			<p><span th:text="${evento.data}"></span></p>
 			<p><span th:text="${evento.horario}"></span></p>	
-		</div>
+		</div><br/>
+		
+		<h1>Convidados cadastrados para o evento</h1><br/>
+		
+		<form method="post">
+		<label>Nome Convidado</label>
+		<input type="text" value="" name="Nome"/>
+		<label>RG </label>
+		<input type="text" value="" name="rg"/>
+		<label>Email</label>
+		<input type="text" value="" name="email"/>
+		<label>Fone</label>
+		<input type="text" value="" name="fone"/>
+		
+		<button type="submit">Adicionar</button>		
+		
+	</form>
+		
 	</div>
+	
+	
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
