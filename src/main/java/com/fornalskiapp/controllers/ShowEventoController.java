@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fornalskiapp.models.CadastroEvento;
+import com.fornalskiapp.models.ConvidadosEvento;
+import com.fornalskiapp.repositories.ConvidadosEventoRepository;
 import com.fornalskiapp.repositories.ShowEventoRepository;
 
 @Controller
@@ -16,6 +18,9 @@ public class ShowEventoController {
 
 	@Autowired
 	private ShowEventoRepository showRepo;
+	
+	@Autowired
+	private ConvidadosEventoRepository convRepo;
 	
 	/*METODO SALVAR*/
 	@RequestMapping(value = "/cadastrarEvento", method = RequestMethod.GET)
@@ -36,7 +41,7 @@ public class ShowEventoController {
 		mv.addObject("eventosss",listaEventos);		
 		return mv;
 	}
-	@RequestMapping("/{codigo}")
+	@RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
 	public ModelAndView detalhesEvento(@PathVariable("codigo") long codigo) {
 		CadastroEvento cadEvento = showRepo.findByCodigo(codigo);
 		ModelAndView mv = new ModelAndView("cadastro/detalhesEvento");/*muito cuidado, colocar o caminho da pasta correto*/
@@ -44,6 +49,16 @@ public class ShowEventoController {
 		System.out.println("cadEvento" + cadEvento);
 		return mv;
 	}
+	
+	@RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
+	public String detalhesEventoPost(@PathVariable("codigo") long codigo,ConvidadosEvento convEvento) {
+		CadastroEvento cadEvento = showRepo.findByCodigo(codigo);
+		convEvento.setCadEvento(cadEvento);
+		convRepo.save(convEvento);
+		
+		return "redirect:/{codigo}";
+	}
+	
 	
 }
 
