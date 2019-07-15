@@ -18,10 +18,10 @@
 			<th>Fone</th>
 			<th>Local</th>
 			<th>Data</th>
-			<th>Horario</th>
+			<th>Horario</th> 
 		</tr>
 		<tr th:each="evento: ${eventosss}">
-			<td><span th:text="${evento.nome}"></span></td>
+			<td><a th:href="${(#mvc.url('SEC#detalhesEvento').arg(0, evento.codigo)).build()}"><span th:text="${evento.nome}"></span></a></td>
 			<td><span th:text="${evento.sobrenome}"></span></td>
 			<td><span th:text="${evento.email}"></span></td>
 			<td><span th:text="${evento.telefone}"></span></td>
@@ -30,7 +30,7 @@
 			<td><span th:text="${evento.horario}"></span></td>
 		</tr>
 	</table>
-<!-- <a th: href="${(#mv.url('EC#detalhesEvento').arg(0, evento.id_evento)).build()}"> -->>
+<!-- <a th: href="${(#mv.url('EC#detalhesEvento').arg(0, evento.id_evento)).build()}"> -->
 
 </body>
 </html>
